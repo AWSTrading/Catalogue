@@ -1,0 +1,2743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Brochure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --green: #1D9044;
+      --black: #181617;
+      --soft: #F5F7F4;
+      --line: #D9E2DB;
+      --bg1: #EEF4EF;
+      --bg2: #F8FAF8;
+      --text: #18181B;
+      --muted: #71717A;
+      --shadow: 0 18px 40px rgba(24, 22, 23, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Cabin, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .topbar {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 18px 22px;
+      margin-bottom: 20px;
+    }
+
+    .topbar h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .topbar p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .topbar img {
+      max-width: 200px;   /* adjust to taste */
+      height: auto;       /* keeps aspect ratio */
+      display: block;
+    }
+
+    .toc {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .toc h2,
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 24px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .toc a,
+    .index a,
+    .back-top {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: var(--white);
+    }
+
+    .toc a:hover,
+    .index a:hover,
+    .back-top:hover {
+      border-color: var(--green);
+    }
+
+    .section {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .section-note {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .product-grid > * {
+      min-width: 0;
+      width: 100%;
+    }
+    
+    .product-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.product-grid-4 > * {
+  min-width: 0;
+  width: 100%;
+}
+
+    .product-card,
+    .placeholder {
+      width: 100%;
+       min-width: 0;
+    }
+
+     .product-card {
+      overflow: hidden;
+      border-radius: 18px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      padding: 12px;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      display: block;
+    }
+
+
+    .product-body {
+      padding: 16px;
+    }
+
+    .product-body h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .product-body p {
+      margin: 0 0 12px;
+      color: #4B5563;
+      line-height: 1.6;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 👈 two equal columns */
+      gap: 6px 20px; /* row gap / column gap */
+      font-size: 14px;
+      line-height: 1.2;
+      color: #374151;
+    }
+
+    .specs .full {
+      grid-column: span 2;
+    }
+
+    .placeholder {
+      border: 1px dashed var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: var(--soft);
+      min-height: 220px;
+    }
+
+    .placeholder h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    .placeholder p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .index {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .footer {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--green);
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .back-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+
+      text-decoration: none;
+      background: var(--green);
+      color: var(--white);
+      padding: 14px 18px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      font-size: 14px;
+      font-weight: bold;
+
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .back-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .back-top {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+@media (max-width: 800px) {
+  .toc-grid,
+  .product-grid,
+  .index-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-card img {
+    height: 260px;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <div class="topbar">
+      <img src="images/aws-logo.png" alt="Logo" />
+      <h1>Brochure</h1>
+      <p>
+        Quickly browse through our range of products. Get in touch with our sales staff for more information.
+      </p>
+    </div>
+
+    <div class="toc">
+      <div class="eyebrow">Table of contents</div>
+      <h2>Browse Categories</h2>
+      <div class="toc-grid">
+
+        <a href="#tables">Tables</a>
+        <a href="#top-colours">Table Top Colours</a>
+        <a href="#chairs">Chairs</a>
+        <a href="#sofas">Sofas</a>
+        <a href="#oak">Oak</a>
+        <a href="#mirror-products">Mirror Products</a>
+        <a href="#lighting">Lighting</a>
+        <a href="#clocks">Clocks</a>
+        <a href="#wall-panels">Wall Panels</a>
+        <a href="#outdoors">Outdoors</a>
+        <a href="#beds-mattresses">Beds & Mattresses</a>
+      </div>
+    </div>
+
+    <div class="section" id="tables">
+      <div class="eyebrow">Category</div>
+      <h2>Tables</h2>
+      <div class="product-grid">        
+
+<div class="product-card">
+          <img src="images/bentley-dining.png" alt="Bentley Dining" />
+          <div class="product-body">
+            <h3>Bentley Tables</h3>
+            <p>
+             Available in Chrome or Black bases
+            </p>
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>∅90cm - ∅90 x 75cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/chelsea-dining.png" alt="Chelsea Tables" />
+          <div class="product-body">
+            <h3>Chelsea Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span>
+              <span>TV - 140 x 40 x 42cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/g-chelsea-dining.jpg" alt="G-Chelsea Tables" />
+          <div class="product-body">
+            <h3>Chelsea Gold Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Lamp - 140 x 40 x 42cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/cheshire-dining.png" alt="Cheshire Tables" />
+          <div class="product-body">
+            <h3>Cheshire Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>Extending - 160-200 x 90 x 75cm</span>
+              <span>Extending - 120-150 x 90 x 75cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/gs-lucy-dining.png" alt="GS-Lucy Tables" />
+          <div class="product-body">
+            <h3>GS-Lucy Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/gs-madrid-dining.jpg" alt="GS-Madrid Tables" />
+          <div class="product-body">
+            <h3>GS-Madrid Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/jessica-dining.png" alt="BK-Jessica Tables" />
+          <div class="product-body">
+            <h3>Jessica Black Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/g-jessica-dining.jpg" alt="G-Jessica Tables" />
+          <div class="product-body">
+            <h3>Jessica Gold Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>160cm - 160 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/lewis-dining.png" alt="Lewis Tables" />
+          <div class="product-body">
+            <h3>Lewis Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>120cm - 120 x 80 x 75cm</span>
+              <span>1x1m - 100 x 100 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span>
+              <span>TV - 140/160 x 40 x 42cm</span><br />
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/g-lewis-dining.png" alt="G-Lewis Tables" />
+          <div class="product-body">
+            <h3>Lewis Gold Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/london-dining.png" alt="London Tables" />
+          <div class="product-body">
+            <h3>London Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>Extending - 160-200 x 100 x 75cm</span>
+              <span>Extending - 120-150 x 100 x 75cm</span>
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span>
+              <span>TV - 140 x 40 x 42cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/g-london-dining.jpg" alt="G-London Tables" />
+          <div class="product-body">
+            <h3>London Gold Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/mb-white-dining.jpg" alt="MB Tables" />
+          <div class="product-body">
+            <h3>MB White Marble Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>150cm - 150 x 90 x 75cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/milan-dining.png" alt="BK-Milan Tables" />
+          <div class="product-body">
+            <h3>Milan Black Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/g-monaco-dining.jpg" alt="G-Monaco Table" />
+          <div class="product-body">
+            <h3>Monaco Gold Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/roma-dining.png" alt="BK-Roma Tables" />
+          <div class="product-body">
+            <h3>Roma Black Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>Extending - 170-195-220 x 90 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/siena-dining.png" alt="Siena Tables" />
+          <div class="product-body">
+            <h3>Siena Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/venice-dining.png" alt="Venice Tables" />
+          <div class="product-body">
+            <h3>Venice Black Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>120cm - 120 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+       </div>
+      </div>
+
+    <div class="section" id="top-colours">
+      <div class="eyebrow">Category</div>
+      <h2>Table Top Colours</h2>
+      <div class="product-grid">
+<div class="product-card">
+          <img src="images/black-marble.jpg" alt="Black Marble" />
+          <div class="product-body">
+            <h3>Black Marble</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>120cm - 120 x 80 x 75cm</span>
+              <span>1x1m - 100 x 100 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/cream-marble.jpg" alt="Cream Marble" />
+          <div class="product-body">
+            <h3>Cream Marble</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/gw-marble.jpg" alt="Gold and White Marble" />
+          <div class="product-body">
+            <h3>Gold and White Marble</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/grey-marble.jpg" alt="Grey Marble" />
+          <div class="product-body">
+            <h3>Grey Marble</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>120cm - 120 x 80 x 75cm</span>
+              <span>1x1m - 100 x 100 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/mixed-brown-marble.jpg" alt="Mixed Brown Marble" />
+          <div class="product-body">
+            <h3>Mixed Brown Marble</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>120cm - 120 x 80 x 75cm</span>
+              <span>1x1m - 100 x 100 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/white-marble.jpg" alt="White Marble" />
+          <div class="product-body">
+            <h3>White Marble</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>120cm - 120 x 80 x 75cm</span>
+              <span>1x1m - 100 x 100 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/mb-white-marble.jpg" alt="MB White Marble" />
+          <div class="product-body">
+            <h3>MB White Marble</h3>
+            <p>
+             Exclusive to the MB White Marble Table
+            </p>
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span>150cm - 150 x 90 x 75cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/gs-cream-marble.jpg" alt="GS Cream Marble" />
+          <div class="product-body">
+            <h3>GS Cream Marble</h3>
+            <p>
+             Exclusive to the GS marble tables
+            </p>
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/gs-grey-marble.jpg" alt="GS Grey Marble" />
+          <div class="product-body">
+            <h3>GS Grey Marble</h3>
+            <p>
+             Exclusive to the GS marble tables
+            </p>
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>200cm - 200 x 100 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+     
+<div class="product-card">
+          <img src="images/armani-ceramic.jpg" alt="Armani Ceramic" />
+          <div class="product-body">
+            <h3>Armani Ceramic</h3>
+            <p>
+             Exclusive to the Cheshire extending tables
+            </p>
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>160-200 x 90 x 75cm</span>
+              <span>120-150 x 90 x 75cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/chanel-ceramic.jpg" alt="Chanel Ceramic" />
+          <div class="product-body">
+            <h3>Chanel Ceramic</h3>
+            <p>
+             This top is only fixed and not interchangable with all tables, see website for more details
+            </p>
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>Roma extending table - 170-195-220 x 90 x 75cm</span>
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>∅130cm - ∅130 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/kasi-gold-ceramic.jpg" alt="Kasi Gold Ceramic" />
+          <div class="product-body">
+            <h3>Kasi Gold Ceramic</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>∅90cm - ∅90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/kata-gold-ceramic.jpg" alt="Kata Gold Ceramic" />
+          <div class="product-body">
+            <h3>Kata Gold Ceramic</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>G-Jessica 160cm - 150 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span>
+              <span>Console - 120 x 40 x 75cm</span>
+              <span>Lamp - 50 x 50 x 55cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/grey-glass.jpg" alt="Grey Glass" />
+          <div class="product-body">
+            <h3>Grey Glass</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>G-Jessica 160cm - 150 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span><br />
+            </div>
+          </div>
+        </div>
+
+<div class="product-card">
+          <img src="images/siena-wood.jpg" alt="Siena Oak" />
+          <div class="product-body">
+            <h3>Siena Oak Veneer</h3>
+            <p>
+             Exclusive to the Siena tables
+            </p>
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span>180cm - 180 x 90 x 75cm</span>
+              <span>150cm - 150 x 90 x 75cm</span>
+              <span>Coffee - 120 x 60 x 45cm</span><br />
+            </div>
+          </div>
+        </div>
+
+</div>
+</div>
+
+    <div class="section" id="chairs">
+      <div class="eyebrow">Category</div>
+      <h2>Chairs</h2>
+      <div class="product-grid-4">
+          <div class="product-card">
+          <img src="images/alice-black.png" alt="Alice Black" />
+          <div class="product-body">
+            <h3>Alice Black</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/alice-grey.png" alt="Alice Grey" />
+          <div class="product-body">
+            <h3>Alice Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/angel-grey.png" alt="Angel Grey" />
+          <div class="product-body">
+            <h3>Angel Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/bentley-beige.png" alt="Bentley Beige" />
+          <div class="product-body">
+            <h3>Bentley Beige</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/bentley-bk-grey.png" alt="Bentley Grey BK" />
+          <div class="product-body">
+            <h3>Bentley Grey BK</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/bentley-grey.png" alt="Bentley Grey" />
+          <div class="product-body">
+            <h3>Bentley Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/bentley-pu-grey.png" alt="Bentley Grey PU" />
+          <div class="product-body">
+            <h3>Bentley Grey PU</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/berry-brown.png" alt="Berry Brown" />
+          <div class="product-body">
+            <h3>Berry Brown</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/berry-grey.png" alt="Berry Grey" />
+          <div class="product-body">
+            <h3>Berry Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/chelsea-black.png" alt="Chelsea Black" />
+          <div class="product-body">
+            <h3>Chelsea Black with Ring Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/chelsea-black-l.png" alt="Chelsea Black" />
+          <div class="product-body">
+            <h3>Chelsea Black with Lion Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+        
+          <div class="product-card">
+          <img src="images/chelsea-cream.png" alt="Chelsea Cream" />
+          <div class="product-body">
+            <h3>Chelsea Cream with Ring Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/chelsea-cream-l.png" alt="Chelsea Cream" />
+          <div class="product-body">
+            <h3>Chelsea Cream with Lion Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/chelsea-grey.png" alt="Chelsea Grey" />
+          <div class="product-body">
+            <h3>Chelsea Grey with Ring Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/chelsea-grey-l.png" alt="Chelsea Grey" />
+          <div class="product-body">
+            <h3>Chelsea Grey with Lion Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/florence-brown.png" alt="Florence Mixed Brown" />
+          <div class="product-body">
+            <h3>Florence Mixed Brown</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/jessica-bk-grey.png" alt="Jessica Grey BK" />
+          <div class="product-body">
+            <h3>Jessica Grey BK</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/jessica-grey.png" alt="Jessica Grey" />
+          <div class="product-body">
+            <h3>Jessica Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/jessica-mink.png" alt="Jessica Mink" />
+          <div class="product-body">
+            <h3>Jessica Mink</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/jessica-silver.png" alt="Jessica Silver" />
+          <div class="product-body">
+            <h3>Jessica Silver</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/lewis-dark-grey.png" alt="Lewis Dark Grey" />
+          <div class="product-body">
+            <h3>Lewis Dark Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/lewis-light-grey.png" alt="Lewis Light Grey" />
+          <div class="product-body">
+            <h3>Lewis Light Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/lewis-mink.png" alt="Lewis Mink" />
+          <div class="product-body">
+            <h3>Lewis Mink</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-lewis-light-grey.png" alt="G-Lewis Light Grey" />
+          <div class="product-body">
+            <h3>G-Lewis Light Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-lewis-mink.png" alt="G-Lewis Mink" />
+          <div class="product-body">
+            <h3>G-Lewis Mink</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/london-dark-grey.png" alt="London Dark Grey" />
+          <div class="product-body">
+            <h3>London Dark Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/london-light-grey.png" alt="London Light Grey" />
+          <div class="product-body">
+            <h3>London Light Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/lucca-cross.png" alt="Lucca Cross" />
+          <div class="product-body">
+            <h3>Lucca Cross Back</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/lucy-black.png" alt="Lucy Black" />
+          <div class="product-body">
+            <h3>Lucy Black</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/lucy-grey.png" alt="Lucy Grey" />
+          <div class="product-body">
+            <h3>Lucy Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-lucy-black.png" alt="G-Lucy Black" />
+          <div class="product-body">
+            <h3>G-Lucy Black</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-lucy-cream.png" alt="G-Lucy Cream" />
+          <div class="product-body">
+            <h3>G-Lucy Cream</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-lucy-grey.png" alt="G-Lucy Grey" />
+          <div class="product-body">
+            <h3>G-Lucy Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-madrid-cream.png" alt="G-Madrid Cream" />
+          <div class="product-body">
+            <h3>G-Madrid Cream</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-madrid-grey.png" alt="G-Madrid Grey" />
+          <div class="product-body">
+            <h3>G-Madrid Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/marbella-black.png" alt="Marbella Black" />
+          <div class="product-body">
+            <h3>Marbella Black</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/marbella-camel.png" alt="Marballa Camel" />
+          <div class="product-body">
+            <h3>Marbella Camel</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/marbella-dark-grey.png" alt="Marbella Dark Grey" />
+          <div class="product-body">
+            <h3>Marbella Dark Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/marbella-light-grey.png" alt="Marbella Light Grey" />
+          <div class="product-body">
+            <h3>Marbella Light Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/mayfair-cream.png" alt="Mayfair Cream" />
+          <div class="product-body">
+            <h3>Mayfair Cream</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/mayfair-grey.png" alt="Mayfair Grey" />
+          <div class="product-body">
+            <h3>Mayfair Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-milan-black.png" alt="G-Milan Black" />
+          <div class="product-body">
+            <h3>G-Milan Black</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-milan-grey.png" alt="G-Milan Grey" />
+          <div class="product-body">
+            <h3>G-Milan Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-milan-ivory.png" alt="G-Milan Ivory" />
+          <div class="product-body">
+            <h3>G-Milan Ivory</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/oslo-green.png" alt="Oslo Dark Green" />
+          <div class="product-body">
+            <h3>Oslo Dark Green</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/oslo-grey.png" alt="Oslo Light Grey" />
+          <div class="product-body">
+            <h3>Oslo Light Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/oslo-white.png" alt="Oslo Off White" />
+          <div class="product-body">
+            <h3>Oslo Off White</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/palma-grey.png" alt="Palma Grey" />
+          <div class="product-body">
+            <h3>Palma Mixed Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roco-grey.png" alt="Roco Grey" />
+          <div class="product-body">
+            <h3>Roco 360° Dark Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-grey.png" alt="Roma Grey" />
+          <div class="product-body">
+            <h3>Roma Dark Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-grey-nk.png" alt="Roma Grey NK" />
+          <div class="product-body">
+            <h3>Roma Dark Grey NK</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-mink.png" alt="Roma Mink" />
+          <div class="product-body">
+            <h3>Roma Mink</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-roma-mink.png" alt="G-Roma Mink" />
+          <div class="product-body">
+            <h3>G-Roma Mink</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-silver.png" alt="Roma Silver" />
+          <div class="product-body">
+            <h3>Roma Silver Grey NK</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-roma-silver.png" alt="G-Roma Silver" />
+          <div class="product-body">
+            <h3>G-Roma Silver Grey NK</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-dg-r.png" alt="Roma Dark Grey Ring" />
+          <div class="product-body">
+            <h3>Roma Dark Grey PU with Ring Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-dg-l.png" alt="Roma Dark Grey Lion" />
+          <div class="product-body">
+            <h3>Roma Dark Grey PU with Lion Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-lg-r.png" alt="Roma Light Grey Ring" />
+          <div class="product-body">
+            <h3>Roma Light Grey PU with Ring Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-lg-l.png" alt="Roma Dark Grey Lion" />
+          <div class="product-body">
+            <h3>Roma Dark Grey PU with Lion Knocker</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rx-black.png" alt="RX Black" />
+          <div class="product-body">
+            <h3>RX Black and Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rx-red.png" alt="RX Red" />
+          <div class="product-body">
+            <h3>RX Red and Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/torino-cross.png" alt="Torino Cross" />
+          <div class="product-body">
+            <h3>Torino Cross Back</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/torino-ladder.png" alt="Torino Ladder" />
+          <div class="product-body">
+            <h3>Torino Ladder Back</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/torino-cross.png" alt="Torino Cross" />
+          <div class="product-body">
+            <h3>Torino Cross Back</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/torino-ladder.png" alt="Torino Ladder" />
+          <div class="product-body">
+            <h3>Torino Ladder Back</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/venice01-grey.png" alt="Venice 01 Grey" />
+          <div class="product-body">
+            <h3>Venice 01 Grey PU</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/venice01-tan.png" alt="Venice 01 Tan" />
+          <div class="product-body">
+            <h3>Venice 01 Tan PU</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/venice-grey.png" alt="Venice Grey" />
+          <div class="product-body">
+            <h3>Venice Dark Grey</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/venice-grey-pu.png" alt="Venice Grey PU" />
+          <div class="product-body">
+            <h3>Venice Grey PU</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/venice-tan-pu.jpg" alt="Venice Tan PU" />
+          <div class="product-body">
+            <h3>Venice Tan PU</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sofas">
+      <div class="eyebrow">Category</div>
+      <h2>Sofas</h2>
+      <p class="section-note">Replace these placeholders with your sofa products.</p>
+      <div class="product-grid">
+          <div class="product-card">
+          <img src="images/bella-grey.jpg" alt="Bella Grey" />
+          <div class="product-body">
+            <h3>Bella Grey 3 Seater Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">225 x 122 x 82cm</span><br />
+            </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/lucy-black-sofa.png" alt="Lucy Black" />
+          <div class="product-body">
+            <h3>Lucy Black PU Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">3 Seater: 172 x 78 x 86cm</span>
+              <span class="full">2 Seater: 132 x 78 x 86cm</span><br />
+            </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/lucy-grey-sofa.png" alt="Lucy Grey" />
+          <div class="product-body">
+            <h3>Lucy Grey Fabric Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">3 Seater: 172 x 78 x 86cm</span>
+              <span class="full">2 Seater: 132 x 78 x 86cm</span><br />
+            </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/milan-black-sofa.png" alt="Milan Black" />
+          <div class="product-body">
+            <h3>Milan Compression Black Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">104 x 104 x 38cm per modular section</span>
+              <span class="full">30cm height per back cushion</span>
+              <span class="full">4 pieces plus cushions included in each purchase</span><br />
+            </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/milan-blue-sofa.png" alt="Milan Blue" />
+          <div class="product-body">
+            <h3>Milan Compression Blue Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">104 x 104 x 38cm per modular section</span>
+              <span class="full">30cm height per back cushion</span>
+              <span class="full">4 pieces plus cushions included in each purchase</span><br />
+            </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/milan-grey-sofa.jpg" alt="Milan Grey" />
+          <div class="product-body">
+            <h3>Milan Compression Grey Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">104 x 104 x 38cm per modular section</span>
+              <span class="full">30cm height per back cushion</span>
+              <span class="full">4 pieces plus cushions included in each purchase</span><br />
+            </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/milan-ivory-sofa.jpg" alt="Milan Ivory" />
+          <div class="product-body">
+            <h3>Milan Compression Ivory Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">104 x 104 x 38cm per modular section</span>
+              <span class="full">30cm height per back cushion</span>
+              <span class="full">4 pieces plus cushions included in each purchase</span><br />
+            </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-black1.png" alt="Montana Black" />
+          <div class="product-body">
+            <h3>Montana Black Recliner Chair</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">115x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-black2.png" alt="Montana Black" />
+          <div class="product-body">
+            <h3>Montana Black 2 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">175x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-black3.png" alt="Montana Black" />
+          <div class="product-body">
+            <h3>Montana Black 3 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">228x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-brown1.png" alt="Montana Brown" />
+          <div class="product-body">
+            <h3>Montana Brown Recliner Chair</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">115x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-brown2.png" alt="Montana Brown" />
+          <div class="product-body">
+            <h3>Montana Brown 2 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">175x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-brown3.png" alt="Montana Brown" />
+          <div class="product-body">
+            <h3>Montana Brown 3 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">228x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-grey1.png" alt="Montana Grey" />
+          <div class="product-body">
+            <h3>Montana Grey Recliner Chair</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">115x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-grey2.png" alt="Montana Grey" />
+          <div class="product-body">
+            <h3>Montana Grey 2 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">175x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-grey3.png" alt="Montana Grey" />
+          <div class="product-body">
+            <h3>Montana Grey 3 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">228x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-ivory1.png" alt="Montana Ivory" />
+          <div class="product-body">
+            <h3>Montana Ivory Recliner Chair</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">115x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-ivory2.png" alt="Montana Ivory" />
+          <div class="product-body">
+            <h3>Montana Ivory 2 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">175x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/montana-ivory3.png" alt="Montana Ivory" />
+          <div class="product-body">
+            <h3>Montana Ivory 3 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">228x 100 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/paris-grey.jpg" alt="Paris Grey" />
+          <div class="product-body">
+            <h3>Paris Grey Sofas</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">3 Seater: 216 x 82 x 72.5cm</span>
+              <span class="full">2 Seater: 171 x 82 x 72.5cm</span>
+              <span class="full">1 Seater: 104 x 82 x 72.5cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/g-paris-grey.png" alt="G-Paris Grey" />
+          <div class="product-body">
+            <h3>G-Paris Grey Sofas</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">3 Seater: 216 x 82 x 72.5cm</span>
+              <span class="full">2 Seater: 171 x 82 x 72.5cm</span>
+              <span class="full">1 Seater: 104 x 82 x 72.5cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/roma-mix-sofa.png" alt="Roma Mix Grey" />
+          <div class="product-body">
+            <h3>Roma Mixed Grey Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">132 x 80 x 85cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rose-brown1.png" alt="Rose Brown" />
+          <div class="product-body">
+            <h3>Rose Brown Recliner Chair</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">106 x 95 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rose-brown2.png" alt="Rose Brown" />
+          <div class="product-body">
+            <h3>Rose Brown 2 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">160 x 95 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rose-brown3.png" alt="Rose Brown" />
+          <div class="product-body">
+            <h3>Rose Brown 3 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">220 x 95 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rose-charcoal1.png" alt="Rose Charcoal" />
+          <div class="product-body">
+            <h3>Rose Charcoal Recliner Chair</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">106 x 95 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rose-charcoal2.png" alt="Rose Charcoal" />
+          <div class="product-body">
+            <h3>Rose Charcoal 2 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">160 x 95 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rose-charcoal3.png" alt="Rose Charcoal" />
+          <div class="product-body">
+            <h3>Rose Charcoal 3 Seater Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">220 x 95 x 107cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/rose-charcoal-corner.png" alt="Rose Charcoal" />
+          <div class="product-body">
+            <h3>Rose Charcoal 2+1 Corner Recliner Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">240 x 95 x 107cm</span>
+              <span class="full">Based on a 2+2 configuration</span>
+              <strong>Console size:</strong><br />
+              <span class="full">32 x 95 x 107 per console</span>
+              <strong>Additional seating size:</strong><br />
+              <span class="full">57 x 95 x 107 per seat</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/siena08-grey.png" alt="Siena Grey" />
+          <div class="product-body">
+            <h3>Siena 08 Grey 5 Seater (RH) Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">325 x 95 x 78cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/siena08-ivory.png" alt="Siena Ivory" />
+          <div class="product-body">
+            <h3>Siena 08 Ivory 5 Seater (LH/RH) Sofa</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">325 x 95 x 78cm</span>
+              <span class="full">Left hand or right hand configurations available, please contact our sales team for more info</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/siena-tub-grey.png" alt="Siena Grey" />
+          <div class="product-body">
+            <h3>Siena Grey Tub Chair</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">80 x 80 x 69cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/siena-tub-ivory.png" alt="Siena Ivory" />
+          <div class="product-body">
+            <h3>Siena Ivory Tub Chair</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">80 x 80 x 69cm</span>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="oak">
+      <div class="eyebrow">Category</div>
+      <h2>Oak</h2>
+      <div class="product-grid-4">
+          <div class="product-card">
+          <img src="images/tor-round.png" alt="Torino Round" />
+          <div class="product-body">
+            <h3>Torino 1.1m Round Extending Dining Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">110-150 x 110 x 78cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-dining.png" alt="Torino Dining" />
+          <div class="product-body">
+            <h3>Torino 1.2/1.4m Extending Dining Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">140-180 x 90 x 78cm</span>
+              <span class="full">120-150 x 85 x 78cm</span>
+             </div>
+          </div>
+        </div>
+        
+          <div class="product-card">
+          <img src="images/tor-moon.png" alt="Torino Half Moon" />
+          <div class="product-body">
+            <h3>Torino Half Moon Extending Dining Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">∅92 x 75cm</span>
+             </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/tor-bed.png" alt="Torino Bed Frame" />
+          <div class="product-body">
+            <h3>Torino Bed Frame</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">King: 203 x 160 x 105cm</span>
+              <span class="full">Double: 203 x 145 x 105cm</span><br />
+            </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-2over3.png" alt="Torino 2+3" />
+          <div class="product-body">
+            <h3>Torino 2+3 Drawer Chest</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">85 x 40 x 96cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-5drawer.png" alt="Torino 5 Drawer" />
+          <div class="product-body">
+            <h3>Torino 5 Drawer Chest</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">55 x 40 x 116cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-6drawer.png" alt="Torino 6 Drawer" />
+          <div class="product-body">
+            <h3>Torino 6 Drawer Chest</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">128 x 40 x 78cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-bed1.png" alt="Torino Bedside" />
+          <div class="product-body">
+            <h3>Torino 1 Drawer Bedside</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">47 x 37 x 62cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-largebook.png" alt="Torino Bookcase" />
+          <div class="product-body">
+            <h3>Torino Large Bookcase</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">80 x 32 x 180cm</span>
+             </div>
+          </div>
+        </div>
+
+
+          <div class="product-card">
+          <img src="images/tor-lowbook.png" alt="Torino Bookcase" />
+          <div class="product-body">
+            <h3>Torino Low Bookcase</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">80 x 32 x 90cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-lamp.png" alt="Torino Lamp Table" />
+          <div class="product-body">
+            <h3>Torino Lamp Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">55 x 55 x 50cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-coffee.png" alt="Torino Coffee" />
+          <div class="product-body">
+            <h3>Torino Coffee Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">90 x 55 x 50cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-console.png" alt="Torino Console" />
+          <div class="product-body">
+            <h3>Torino Console Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">85 x 34 x 70cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-display.png" alt="Torino Display" />
+          <div class="product-body">
+            <h3>Torino Display Cabinet</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">36 x 85 x 180cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-dressing.png" alt="Torino Dressing Table" />
+          <div class="product-body">
+            <h3>Torino Dressing Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">107 x 44 x 75cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-lamp.png" alt="Torino Lamp Table" />
+          <div class="product-body">
+            <h3>Torino Lamp Table</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">55 x 55 x 50cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-nest2.png" alt="Torino Nest of Tables" />
+          <div class="product-body">
+            <h3>Torino Nest of 2 Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">54 x 37 x 50cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-nest3.png" alt="Torino Nest of Tables" />
+          <div class="product-body">
+            <h3>Torino Nest of 3 Tables</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">54 x 37 x 50cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-mini.png" alt="Torino Sideboard" />
+          <div class="product-body">
+            <h3>Torino Mini Sideboard</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">70 x 35 x 81cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-small.png" alt="Torino Sideboard" />
+          <div class="product-body">
+            <h3>Torino Small Sideboard</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">97 x 40 x 81cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-large.png" alt="Torino Sideboard" />
+          <div class="product-body">
+            <h3>Torino Large Sideboard</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">137 x 40 x 81cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-smalltv.png" alt="Torino TV" />
+          <div class="product-body">
+            <h3>Torino Small TV Unit</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">92 x 40 x 50cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-largetv.png" alt="Torino TV" />
+          <div class="product-body">
+            <h3>Torino Large TV Unit</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">120 x 40 x 50cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-xltv.png" alt="Torino TV" />
+          <div class="product-body">
+            <h3>Torino X-Large TV Unit</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">180 x 40 x 50cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-cornertv.png" alt="Torino TV" />
+          <div class="product-body">
+            <h3>Torino Corner TV Unit</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">80 x 40 x 65cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-smallwardrobe.png" alt="Torino Wardrobe" />
+          <div class="product-body">
+            <h3>Torino Small Wardrobe</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">90 x 56 x 190cm</span>
+             </div>
+          </div>
+        </div>
+
+          <div class="product-card">
+          <img src="images/tor-largewardrobe.png" alt="Torino Wardrobe" />
+          <div class="product-body">
+            <h3>Torino Large Wardrobe</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">130.5 x 56 x 190cm</span>
+             </div>
+          </div>
+        </div>
+
+        [ABOVE HERE]
+      </div>
+    </div>
+
+    <div class="section" id="mirror-products">
+      <div class="eyebrow">Category</div>
+      <h2>Mirror Products</h2>
+      <p class="section-note">Replace these placeholders with your mirror products.</p>
+      <div class="product-grid">
+        <div class="placeholder"><h3>Mirror product 1</h3><p>Add image, name, description, and sizes here.</p></div>
+        <div class="placeholder"><h3>Mirror product 2</h3><p>Add image, name, description, and sizes here.</p></div>
+      </div>
+    </div>
+
+    <div class="section" id="lighting">
+      <div class="eyebrow">Category</div>
+      <h2>Lighting</h2>
+      <p class="section-note">Replace these placeholders with your lighting products.</p>
+      <div class="product-grid">
+        <div class="placeholder"><h3>Lighting product 1</h3><p>Add image, name, description, and sizes here.</p></div>
+        <div class="placeholder"><h3>Lighting product 2</h3><p>Add image, name, description, and sizes here.</p></div>
+      </div>
+    </div>
+
+    <div class="section" id="clocks">
+      <div class="eyebrow">Category</div>
+      <h2>Clocks</h2>
+      <p class="section-note">Replace these placeholders with your clock products.</p>
+      <div class="product-grid">
+        <div class="placeholder"><h3>Clock product 1</h3><p>Add image, name, description, and sizes here.</p></div>
+        <div class="placeholder"><h3>Clock product 2</h3><p>Add image, name, description, and sizes here.</p></div>
+      </div>
+    </div>
+
+    <div class="section" id="wall-panels">
+      <div class="eyebrow">Category</div>
+      <h2>Wall Panels</h2>
+      <p class="section-note">Replace these placeholders with your wall panel products.</p>
+      <div class="product-grid">
+        <div class="placeholder"><h3>Wall panel product 1</h3><p>Add image, name, description, and sizes here.</p></div>
+        <div class="placeholder"><h3>Wall panel product 2</h3><p>Add image, name, description, and sizes here.</p></div>
+      </div>
+    </div>
+
+    <div class="section" id="outdoors">
+      <div class="eyebrow">Category</div>
+      <h2>Outdoors</h2>
+      <p class="section-note">Replace these placeholders with your outdoor products.</p>
+      <div class="product-grid">
+        <div class="placeholder"><h3>Outdoor product 1</h3><p>Add image, name, description, and sizes here.</p></div>
+        <div class="placeholder"><h3>Outdoor product 2</h3><p>Add image, name, description, and sizes here.</p></div>
+      </div>
+    </div>
+
+    <div class="section" id="beds-mattresses">
+      <div class="eyebrow">Category</div>
+      <h2>Beds & Mattresses</h2>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="images/roma-bed.jpg" alt="Roma Bed Frame" />
+          <div class="product-body">
+            <h3>Roma Bed Frame</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">King: 213 x 164cm</span>
+              <span class="full">Double: 203 x 149cm</span>
+              <span class="full">Single: 203 x 104cm</span>
+              <strong>Details:</strong><br />
+              <span class="full">Headboard: 120cm H</span>
+              <span class="full">Frame: 32cm H</span></span>
+              <span class="full">Base: 28cm H</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/siena-bed.jpg" alt="Siena Gas Lift Bed Frame" />
+          <div class="product-body">
+            <h3>Siena Gas Lift Bed Frame</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">King: 216 x 160cm</span>
+              <span class="full">Double: 206 x 145cm</span>
+              <strong>Details:</strong><br />
+              <span class="full">Headboard: 130cm H</span>
+              <span class="full">Frame: 35cm H</span>
+              <span class="full">Base: 30cm H</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/torino-bed.png" alt="Torino Bed Frame" />
+          <div class="product-body">
+            <h3>Torino Bed Frame</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">King: 203 x 160 x 105cm</span>
+              <span class="full">Double: 203 x 145 x 105cm</span><br />
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="images/lucca-bed.png" alt="Lucca Bed Frame" />
+          <div class="product-body">
+            <h3>Lucca Bed Frame</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Size:</strong><br />
+              <span class="full">Double: 203 x 145 x 105cm</span><br />
+            </div>
+          </div>
+        </div>
+
+  <div class="product-card">
+          <img src="images/A23.jpg" alt="A23 Mattress" />
+          <div class="product-body">
+            <h3>A23 Mattress</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">King: 1500mm x 2000mm</span>
+              <span class="full">Double: 1350mm x 1900mm</span>
+              <span class="full">Small Double: 1200mm x 1900mm</span>
+              <span class="full">Single: 900mm x 1900mm</span><br />
+            </div>
+          </div>
+        </div>
+
+  <div class="product-card">
+          <img src="images/B28.jpg" alt="B28 Mattress" />
+          <div class="product-body">
+            <h3>B28 Mattress</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">King: 1500mm x 2000mm</span>
+              <span class="full">Double: 1350mm x 1900mm</span><br />
+            </div>
+          </div>
+        </div>
+
+  <div class="product-card">
+          <img src="images/C28.jpg" alt="C28 Mattress" />
+          <div class="product-body">
+            <h3>C28 Mattress</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">Super King: 1800mm x 2000mm</span>
+              <span class="full">King: 1500mm x 2000mm</span>
+              <span class="full">Double: 1350mm x 1900mm</span><br />
+            </div>
+          </div>
+        </div>
+
+  <div class="product-card">
+          <img src="images/D35.jpg" alt="D35 Mattress" />
+          <div class="product-body">
+            <h3>D35 Mattress</h3>
+            <!--<p>
+             DESCRIPTION HERE (HIDDEN)
+            </p>-->
+            <div class="specs">
+              <strong>Sizes:</strong><br />
+              <span class="full">Super King: 1800mm x 2000mm</span>
+              <span class="full">King: 1500mm x 2000mm</span>
+              <span class="full">Double: 1350mm x 1900mm</span>
+              <span class="full">Small Double: 1200mm x 1900mm</span>
+              <span class="full">Single: 900mm x 1900mm</span><br />
+            </div>
+          </div>
+        </div>
+</div>
+
+      <a class="back-top" href="#top" style="margin-bottom:30px;">Back to top</a>
+</div>
+
+    <div class="index">
+      <div class="eyebrow">Index</div>
+      <h2>Quick links</h2>
+      <div class="index-grid">
+        <a href="#beds-mattresses">Roma Bed Frame</a>
+        <a href="#tables">Tables</a>
+        <a href="#chairs">Chairs</a>
+        <a href="#sofas">Sofas</a>
+        <a href="#oak">Oak</a>
+        <a href="#mirror-products">Mirror Products</a>
+        <a href="#lighting">Lighting</a>
+        <a href="#clocks">Clocks</a>
+        <a href="#wall-panels">Wall Panels</a>
+        <a href="#outdoors">Outdoors</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="eyebrow">Ordering information</div>
+      <h2>Retailer support notes</h2>
+      <p class="section-note">
+        Replace this paragraph with ordering information, lead times, delivery notes, and support contact details that are safe to share with retailers and their customers.
+      </p>
+    </div>
+  </div>
+<a class="back-top" href="#top">↑ Top</a>
+<script>
+  const btn = document.querySelector('.back-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+</script>
+</body>
+</html>
